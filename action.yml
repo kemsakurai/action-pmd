@@ -1,6 +1,6 @@
-name: 'TODO: Run <linter-name> with reviewdog'
-description: 'TODO: 🐶 Run <linter-name> with reviewdog on pull requests to improve code review experience.'
-author: 'TODO: <your-name>'
+name: 'PMD for Java'
+description: '🐶 Run PMD analysis on Java code and report results directly to pull request with the help of reviewdog.'
+author: 'Ken Sakurai'
 inputs:
   github_token:
     description: 'GITHUB_TOKEN'
@@ -28,16 +28,17 @@ inputs:
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
-  ### Flags for <linter-name> ###
-  locale:
-    description: '-locale flag of misspell. (US/UK)'
-    default: ''
+  ### Flags for PMD ###
+  src_path:
+    description: 'Specify the directory where the sources to be analyzed are stored. Default is `src/main/java`.'
+    default: 'src/main/java'
+  rulesets_path:
+    description: 'Specify the path of the PMD rule set. Default is `rulesets/java/quickstart.xml`.'
+    default: 'rulesets/java/quickstart.xml'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-
 # Ref: https://haya14busa.github.io/github-action-brandings/
-# TODO: update branding if you want.
 branding:
   icon: 'check'
-  color: 'blue'
+  color: 'green'
