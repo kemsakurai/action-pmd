@@ -15,6 +15,10 @@ ls
 wget -q "https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.51.0/pmd-bin-6.51.0.zip"
 unzip pmd-bin-6.51.0.zip
 cd pmd-bin-6.51.0/bin
+
+pwd
+ls
+
 run.sh pmd -d {INPUT_SRC_PATH} -R {INPUT_RULESETS_PATH} -f emacs \
   | reviewdog -efm="%f:%l: %m" \
       -name="pmd" \
