@@ -14,7 +14,8 @@ ls
 # fetch pmd of a requested version
 wget -q "https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.51.0/pmd-bin-6.51.0.zip"
 unzip pmd-bin-6.51.0.zip
-./pmd-bin-6.51.0/bin/run.sh pmd -d {INPUT_SRC_PATH} -R {INPUT_RULESETS_PATH} -f emacs \
+cd pmd-bin-6.51.0/bin
+run.sh pmd -d {INPUT_SRC_PATH} -R {INPUT_RULESETS_PATH} -f emacs \
   | reviewdog -efm="%f:%l: %m" \
       -name="pmd" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
@@ -22,3 +23,4 @@ unzip pmd-bin-6.51.0.zip
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
       -level="${INPUT_LEVEL}" \
       ${INPUT_REVIEWDOG_FLAGS}
+
