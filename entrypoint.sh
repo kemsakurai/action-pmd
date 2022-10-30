@@ -17,7 +17,7 @@ unzip pmd-bin-6.51.0.zip
 alias pmd="./pmd-bin-6.51.0/bin/run.sh pmd"
 exec pmd -d {INPUT_SRC_PATH} -R {INPUT_RULESETS_PATH} -f emacs \
   | reviewdog -efm="%f:%l: %m" \
-      -name="PMD" \
+      -name="pmd" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
       -fail-on-error="${INPUT_FAIL_ON_ERROR}" \
