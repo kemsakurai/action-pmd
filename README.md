@@ -41,6 +41,9 @@ inputs:
       Exit code for reviewdog when errors are found [true,false]
       Default is `false`.
     default: 'false'
+  tool_name:
+    description: 'Tool name to use for reviewdog reporter'
+    default: 'pmd'
   reviewdog_flags:
     description: 'Additional reviewdog flags'
     default: ''
