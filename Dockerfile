@@ -6,7 +6,7 @@ RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/in
 
 RUN wget -q https://github.com/pmd/pmd/releases/download/pmd_releases%2F6.51.0/pmd-bin-6.51.0.zip
 RUN unzip pmd-bin-6.51.0.zip
-RUN echo 'alias pmd="/pmd-bin-6.51.0/bin/run.sh pmd"' >> ~/.shrc
+RUN echo 'alias pmd="/pmd-bin-6.51.0/bin/run.sh pmd"' >> ~/.bashrc
 
 RUN apk add --no-cache git
 
