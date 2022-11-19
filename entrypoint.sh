@@ -10,6 +10,7 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 
 printenv
 ls
+exec pmd
 
 exec pmd -d "${INPUT_SRC_PATH}" -R "${INPUT_RULESETS_PATH}" -f emacs \
   | reviewdog -efm="%f:%l: %m" \
