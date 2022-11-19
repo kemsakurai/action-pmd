@@ -67,7 +67,7 @@ jobs:
     name: PMD job
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Run PMD
       uses: kemsakurai/action-pmd@master
       with:
