@@ -1,0 +1,23 @@
+on:
+  release:
+    types:
+      - published
+jobs:
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump env
+        run: env | sort
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+  send-release-info:  
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get release info and Post Data
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        echo send-release-info...
