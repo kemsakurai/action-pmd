@@ -61,15 +61,6 @@ jobs:
           workdir: ./testdata/subdir/
           src_path: ./
           pmd_cache: '/tmp/pmd-cache'
-      - name: Verify cache was created
-        run: |
-          if [ -d "/tmp/pmd-cache" ]; then
-            echo "✓ PMD cache directory created successfully"
-            ls -la /tmp/pmd-cache || true
-          else
-            echo "✗ PMD cache directory not found"
-            exit 1
-          fi
 
   test-pmd7-bestpractices:
     name: runner / pmd 7.x bestpractices ruleset

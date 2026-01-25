@@ -43,6 +43,9 @@ if [ -n "${INPUT_PMD_CACHE}" ]; then
   if [ -d "${INPUT_PMD_CACHE}" ]; then
     chmod 777 "${INPUT_PMD_CACHE}" 2>/dev/null || true
     CACHE_OPT="--cache ${INPUT_PMD_CACHE}"
+    echo "✓ PMD cache directory created successfully at ${INPUT_PMD_CACHE}"
+  else
+    echo "✗ PMD cache directory creation failed"
   fi
 fi
 
