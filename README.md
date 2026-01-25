@@ -82,7 +82,7 @@ inputs:
     description: 'Specify the path of the PMD rule set. Default is `category/java/bestpractices.xml`.'
     default: 'category/java/bestpractices.xml'
   pmd_cache:
-    description: 'Enable PMD incremental analysis with cache file path (e.g., "/tmp/pmd-cache"). Leave empty to disable.'
+    description: 'Enable PMD incremental analysis with cache file path (e.g., "/tmp/pmd-cache/pmd.cache"). Must be a file path, not a directory. Leave empty to disable.'
     default: ''
 ```
 
@@ -124,7 +124,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         reporter: 'github-pr-review'
         tool_name: 'pmd_reviewdog'
-        pmd_cache: '/tmp/pmd-cache'  # Enable incremental analysis
+        pmd_cache: '/tmp/pmd-cache/pmd.cache'  # Enable incremental analysis
 ```
 
 ### With Custom Ruleset
@@ -270,7 +270,7 @@ PMD 7.x supports incremental analysis via the `--cache` option, which can signif
 ```yaml
 - uses: kemsakurai/action-pmd@v0.1.0
   with:
-    pmd_cache: '/tmp/pmd-cache'
+    pmd_cache: '/tmp/pmd-cache/pmd.cache'
 ```
 
 **Benefits:**
@@ -293,7 +293,7 @@ PMD 7.x supports incremental analysis via the `--cache` option, which can signif
 
 - uses: kemsakurai/action-pmd@v0.1.0
   with:
-    pmd_cache: '/tmp/pmd-cache'
+    pmd_cache: '/tmp/pmd-cache/pmd.cache'
 ```
 
 ## Troubleshooting
@@ -333,7 +333,7 @@ Warning: Failed to create cache directory
 **Solution:**
 Ensure the cache path is writable. The action automatically sets permissions, but if using a custom path, verify access:
 ```yaml
-pmd_cache: '/tmp/pmd-cache'  # /tmp is always writable
+pmd_cache: '/tmp/pmd-cache/pmd.cache'  # /tmp is always writable
 ```
 
 #### Error: "Java version mismatch"

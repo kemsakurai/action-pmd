@@ -37,13 +37,16 @@ fi
 CACHE_OPT=""
 if [ -n "${INPUT_PMD_CACHE}" ]; then
   echo "PMD cache enabled: ${INPUT_PMD_CACHE}"
-  mkdir -p "${INPUT_PMD_CACHE}" || {
+  # PMD cache requires a file path, not a directory
+  # Create parent directory if it doesn't exist
+  CACHE_DIR=$(dirname "${INPUT_PMD_CACHE}")
+  mkdir -p "${CACHE_DIR}" || {
     echo "Warning: Failed to create cache directory. Continuing without cache."
   }
-  if [ -d "${INPUT_PMD_CACHE}" ]; then
-    chmod 777 "${INPUT_PMD_CACHE}" 2>/dev/null || true
+  if [ -d "${CACHE_DIR}" ]; then
+    chmod 777 "${CACHE_DIR}" 2>/dev/null || true
     CACHE_OPT="--cache ${INPUT_PMD_CACHE}"
-    echo "✓ PMD cache directory created successfully at ${INPUT_PMD_CACHE}"
+    echo "✓ PMD cache file will be created at ${INPUT_PMD_CACHE}"
   else
     echo "✗ PMD cache directory creation failed"
   fi

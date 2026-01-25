@@ -39,7 +39,7 @@ inputs:
     description: 'Specify the path of the PMD rule set. Default is `category/java/bestpractices.xml`.'
     default: 'category/java/bestpractices.xml'
   pmd_cache:
-    description: 'Enable PMD incremental analysis with cache file path (e.g., "/tmp/pmd-cache"). Leave empty to disable.'
+    description: 'Enable PMD incremental analysis with cache file path (e.g., "/tmp/pmd-cache/pmd.cache"). Must be a file path, not a directory. Leave empty to disable.'
     default: ''
 runs:
   using: 'docker'

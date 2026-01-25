@@ -60,7 +60,7 @@ jobs:
           level: info
           workdir: ./testdata/subdir/
           src_path: ./
-          pmd_cache: '/tmp/pmd-cache'
+          pmd_cache: '/tmp/pmd-cache/pmd.cache'
 
   test-pmd7-bestpractices:
     name: runner / pmd 7.x bestpractices ruleset
