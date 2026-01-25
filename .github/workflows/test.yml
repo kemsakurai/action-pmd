@@ -46,3 +46,42 @@ jobs:
           reviewdog_flags: -filter-mode=file -fail-on-error
           workdir: ./testdata/subdir/
           src_path: ./
+
+  test-pmd7-cache:
+    name: runner / pmd 7.x with cache
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test PMD 7.x with cache enabled
+        uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-check
+          level: info
+          workdir: ./testdata/subdir/
+          src_path: ./
+          pmd_cache: '/tmp/pmd-cache'
+      - name: Verify cache was created
+        run: |
+          if [ -d "/tmp/pmd-cache" ]; then
+            echo "✓ PMD cache directory created successfully"
+            ls -la /tmp/pmd-cache || true
+          else
+            echo "✗ PMD cache directory not found"
+            exit 1
+          fi
+
+  test-pmd7-bestpractices:
+    name: runner / pmd 7.x bestpractices ruleset
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test PMD 7.x with category/java/bestpractices.xml
+        uses: ./
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-check
+          level: info
+          workdir: ./testdata/subdir/
+          src_path: ./
+          rulesets_path: 'category/java/bestpractices.xml'

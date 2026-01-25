@@ -36,8 +36,11 @@ inputs:
     description: 'Specify the directory where the sources to be analyzed are stored. Default is `src/main/java`.'
     default: 'src/main/java'
   rulesets_path:
-    description: 'Specify the path of the PMD rule set. Default is `rulesets/java/quickstart.xml`.'
-    default: 'rulesets/java/quickstart.xml'
+    description: 'Specify the path of the PMD rule set. Default is `category/java/bestpractices.xml`.'
+    default: 'category/java/bestpractices.xml'
+  pmd_cache:
+    description: 'Enable PMD incremental analysis with cache file path (e.g., "/tmp/pmd-cache"). Leave empty to disable.'
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
