@@ -17,7 +17,7 @@ ARG REVIEWDOG_VERSION=v0.21.0
 
 # Install reviewdog
 # hadolint ignore=DL4006,SC2086
-RUN wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
+RUN wget -O - --progress=dot:giga https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
 
 # Install git (required for reviewdog)
 # hadolint ignore=DL3018
