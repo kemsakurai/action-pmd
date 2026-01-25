@@ -51,15 +51,8 @@ ls
 
 # Execute PMD with error handling
 echo "Running PMD analysis..."
-exec /bin/sh -c "pmd check -d \"${INPUT_SRC_PATH}\" -R \"${INPUT_RULESETS_PATH}\" ${CACHE_OPT} -f emacs || {
-  echo \"Error: PMD execution failed.\"
-  echo \"Common issues:\"
-  echo \"  - Ruleset not found: Verify 'rulesets_path' parameter\"
-  echo \"  - Invalid Java source: Check Java syntax in source files\"
-  echo \"  - PMD 7.x compatibility: Use category-based rulesets (e.g., 'category/java/bestpractices.xml')\"
-  echo \"See documentation: https://docs.pmd-code.org/latest/\"
-  exit 1
-}" | reviewdog -efm="%f:%l: %m" \
+pmd check -d "${INPUT_SRC_PATH}" -R "${INPUT_RULESETS_PATH}" ${CACHE_OPT} -f emacs \
+  | reviewdog -efm="%f:%l: %m" \
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
       -filter-mode="${INPUT_FILTER_MODE}" \
