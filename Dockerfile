@@ -28,7 +28,7 @@ COPY --from=pmd-builder /pmd /pmd
 
 # Set PMD environment variables
 ENV PMD_HOME=/pmd
-ENV PATH="${PMD_HOME}/bin:${PATH}"
+ENV PATH="${PMD_HOME}/bin:/usr/local/bin:${PATH}"
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

@@ -12,6 +12,9 @@ export REVIEWDOG_GITHUB_API_TOKEN="${INPUT_GITHUB_TOKEN}"
 echo "=== Environment Information ==="
 java -version
 pmd --version
+echo "Reviewdog location: $(which reviewdog || echo 'not found in PATH')"
+reviewdog --version || echo "Warning: reviewdog not executable"
+echo "PATH: $PATH"
 echo "==============================="
 
 # Validate source directory exists
@@ -50,6 +53,8 @@ if [ -n "${INPUT_PMD_CACHE}" ]; then
   else
     echo "✗ PMD cache directory creation failed"
   fi
+else
+  echo "PMD cache is disabled (INPUT_PMD_CACHE is empty)"
 fi
 
 printenv
