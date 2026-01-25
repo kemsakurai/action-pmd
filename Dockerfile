@@ -15,13 +15,15 @@ FROM eclipse-temurin:21-alpine
 
 ARG REVIEWDOG_VERSION=v0.21.0
 
+# Install git and dependencies (required for reviewdog)
+# hadolint ignore=DL3018
+RUN apk add --no-cache git wget
+
 # Install reviewdog
 # hadolint ignore=DL4006,SC2086
-RUN wget -O - --progress=dot:giga https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION}
-
-# Install git (required for reviewdog)
-# hadolint ignore=DL3018
-RUN apk add --no-cache git
+RUN set -ex && \
+    wget -O - --progress=dot:giga https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/ ${REVIEWDOG_VERSION} && \
+    reviewdog --version
 
 # Copy PMD from build stage
 COPY --from=pmd-builder /pmd /pmd
