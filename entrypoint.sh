@@ -51,7 +51,7 @@ ls
 
 # Execute PMD with error handling
 echo "Running PMD analysis..."
-pmd check -d "${INPUT_SRC_PATH}" -R "${INPUT_RULESETS_PATH}" ${CACHE_OPT} -f emacs \
+pmd check -d "${INPUT_SRC_PATH}" -R "${INPUT_RULESETS_PATH}" ${CACHE_OPT} -f emacs --no-progress \
   | reviewdog -efm="%f:%l: %m" \
       -name="${INPUT_TOOL_NAME}" \
       -reporter="${INPUT_REPORTER:-github-pr-check}" \
