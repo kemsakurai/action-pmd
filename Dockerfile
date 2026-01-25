@@ -5,7 +5,7 @@ ARG PMD_VERSION=7.20.0
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache wget unzip && \
-    wget -O /tmp/pmd.zip "https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip" && \
+    wget --progress=dot:giga -O /tmp/pmd.zip "https://github.com/pmd/pmd/releases/download/pmd_releases%2F${PMD_VERSION}/pmd-dist-${PMD_VERSION}-bin.zip" && \
     unzip /tmp/pmd.zip -d /tmp && \
     mv /tmp/pmd-bin-${PMD_VERSION} /pmd && \
     rm /tmp/pmd.zip
