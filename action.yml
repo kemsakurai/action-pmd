@@ -20,11 +20,11 @@ inputs:
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
       Default is added.
     default: 'added'
-  fail_on_error:
+  fail_level:
     description: |
-      Exit code for reviewdog when errors are found [true,false]
-      Default is `false`.
-    default: 'false'
+      Fail level for reviewdog [none,any,info,warning,error]
+      Default is `none`.
+    default: 'none'
   tool_name:
     description: 'Tool name to use for reviewdog reporter'
     default: 'pmd'    
@@ -36,8 +36,11 @@ inputs:
     description: 'Specify the directory where the sources to be analyzed are stored. Default is `src/main/java`.'
     default: 'src/main/java'
   rulesets_path:
-    description: 'Specify the path of the PMD rule set. Default is `rulesets/java/quickstart.xml`.'
-    default: 'rulesets/java/quickstart.xml'
+    description: 'Specify the path of the PMD rule set. Default is `category/java/bestpractices.xml`.'
+    default: 'category/java/bestpractices.xml'
+  pmd_cache:
+    description: 'Enable PMD incremental analysis with cache file path (e.g., "/tmp/pmd-cache/pmd.cache"). Must be a file path, not a directory. Leave empty to disable.'
+    default: ''
 runs:
   using: 'docker'
   image: 'Dockerfile'
