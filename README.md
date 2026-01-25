@@ -63,11 +63,11 @@ inputs:
       Filtering mode for the reviewdog command [added,diff_context,file,nofilter].
       Default is added.
     default: 'added'
-  fail_on_error:
+  fail_level:
     description: |
-      Exit code for reviewdog when errors are found [true,false]
-      Default is `false`.
-    default: 'false'
+      Fail level for reviewdog [none,any,info,warning,error]
+      Default is `none`.
+    default: 'none'
   tool_name:
     description: 'Tool name to use for reviewdog reporter'
     default: 'pmd'
