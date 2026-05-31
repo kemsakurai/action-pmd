@@ -105,7 +105,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     - name: Run PMD
-      uses: kemsakurai/action-pmd@v0.1.0
+      uses: kemsakurai/action-pmd@aafc862a11dd31e0f93c8c4d06e403fd6bbcca8b
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         reporter: 'github-pr-review'
@@ -125,7 +125,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     - name: Run PMD
-      uses: kemsakurai/action-pmd@v0.1.0
+      uses: kemsakurai/action-pmd@aafc862a11dd31e0f93c8c4d06e403fd6bbcca8b
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         reporter: 'github-pr-review'
@@ -146,7 +146,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     - name: Run PMD
-      uses: kemsakurai/action-pmd@v0.1.0
+      uses: kemsakurai/action-pmd@aafc862a11dd31e0f93c8c4d06e403fd6bbcca8b
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         reporter: 'github-pr-check'
@@ -195,8 +195,8 @@ For comprehensive migration information, please refer to:
      with:
        rulesets_path: 'rulesets/java/quickstart.xml'
    
-   # After (v0.1.0)
-   - uses: kemsakurai/action-pmd@v0.1.0
+  # After (commit SHA pin)
+  - uses: kemsakurai/action-pmd@aafc862a11dd31e0f93c8c4d06e403fd6bbcca8b
      with:
        rulesets_path: 'category/java/bestpractices.xml'  # Updated path
    ```
@@ -222,7 +222,7 @@ PMD 7.x provides category-based rulesets. Here are recommended options:
 ### Multiple Rulesets Example
 
 ```yaml
-- uses: kemsakurai/action-pmd@v0.1.0
+- uses: kemsakurai/action-pmd@aafc862a11dd31e0f93c8c4d06e403fd6bbcca8b
   with:
     rulesets_path: 'category/java/bestpractices.xml,category/java/errorprone.xml'
 ```
@@ -261,7 +261,7 @@ Create a custom `pmd-ruleset.xml` in your repository:
 Then use it in your workflow:
 
 ```yaml
-- uses: kemsakurai/action-pmd@v0.1.0
+- uses: kemsakurai/action-pmd@aafc862a11dd31e0f93c8c4d06e403fd6bbcca8b
   with:
     rulesets_path: './pmd-ruleset.xml'
 ```
@@ -274,7 +274,7 @@ PMD 7.x supports incremental analysis via the `--cache` option, which can signif
 
 **Enable Cache:**
 ```yaml
-- uses: kemsakurai/action-pmd@v0.1.0
+- uses: kemsakurai/action-pmd@aafc862a11dd31e0f93c8c4d06e403fd6bbcca8b
   with:
     pmd_cache: '/tmp/pmd-cache/pmd.cache'
 ```
@@ -297,7 +297,7 @@ PMD 7.x supports incremental analysis via the `--cache` option, which can signif
     restore-keys: |
       pmd-cache-
 
-- uses: kemsakurai/action-pmd@v0.1.0
+- uses: kemsakurai/action-pmd@aafc862a11dd31e0f93c8c4d06e403fd6bbcca8b
   with:
     pmd_cache: '/tmp/pmd-cache/pmd.cache'
 ```
