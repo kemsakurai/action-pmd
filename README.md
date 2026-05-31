@@ -13,7 +13,7 @@ This is a GitHub action to run [PMD](https://github.com/pmd/pmd) check on your J
 
 **This version includes major updates and breaking changes:**
 
-- **PMD 7.20.0**: Upgraded from PMD 6.55.0 to 7.20.0
+- **PMD 7.25.0**: Updated to PMD 7.25.0
 - **Java 21**: Now using Eclipse Temurin 21 (upgraded from OpenJDK 17)
 - **Reviewdog v0.21.0**: Updated from v0.14.1
 - **Default Ruleset Change**: `category/java/bestpractices.xml` (was `rulesets/java/quickstart.xml`)
@@ -33,8 +33,14 @@ This is a GitHub action to run [PMD](https://github.com/pmd/pmd) check on your J
 | Component | Version |
 |-----------|---------|
 | Java | Eclipse Temurin 21 (LTS) |
-| PMD | 7.20.0 |
+| PMD | 7.25.0 |
 | Reviewdog | v0.21.0 |
+
+### PMD 7.25.0 Notes
+
+- PMD 7.25.0 updates ANTLR to 4.13.2.
+- If you maintain custom ANTLR-based PMD language modules, regenerate parsers/lexers with ANTLR 4.13.2.
+- Java rules were added/updated and violation locations were improved, so CI findings may differ from earlier PMD 7.x versions.
 
 ## Example
 
@@ -167,7 +173,7 @@ For comprehensive migration information, please refer to:
 
 3. **Deprecated Rules Removed**
    - Many legacy rules have been removed or replaced
-   - See [Removed Rules List](https://docs.pmd-code.org/pmd-doc-7.20.0/pmd_release_notes_pmd7.html#removed-rules)
+   - See [Removed Rules List](https://docs.pmd-code.org/pmd-doc-7.25.0/pmd_release_notes_pmd7.html#removed-rules)
 
 4. **Property Delimiter Change**
    - Old: Pipe `|` separator
@@ -178,8 +184,8 @@ For comprehensive migration information, please refer to:
 1. **Verify Current Ruleset Compatibility**
    ```bash
    # Test your current ruleset with PMD 7.x
-   docker build --build-arg PMD_VERSION=7.20.0 -t action-pmd:test .
-   docker run -v $(pwd):/workspace action-pmd:test pmd check -d /workspace/src -R category/java/bestpractices.xml
+  docker build --build-arg PMD_VERSION=7.25.0 -t action-pmd:test .
+  docker run --rm --entrypoint sh -v $(pwd):/workspace action-pmd:test -lc 'export PATH="/opt/java/openjdk/bin:/pmd/bin:$PATH" && pmd check -d /workspace/src -R category/java/bestpractices.xml --no-progress'
    ```
 
 2. **Update Workflow Configuration**
@@ -321,7 +327,7 @@ Error: Rule 'SomeRuleName' not found
 ```
 
 **Solution:**
-The rule may have been removed in PMD 7.x. Check the [removed rules list](https://docs.pmd-code.org/pmd-doc-7.20.0/pmd_release_notes_pmd7.html#removed-rules) and find alternatives.
+The rule may have been removed in PMD 7.x. Check the [removed rules list](https://docs.pmd-code.org/pmd-doc-7.25.0/pmd_release_notes_pmd7.html#removed-rules) and find alternatives.
 
 #### Error: "Permission denied" (Cache)
 
@@ -358,14 +364,14 @@ You can build the Docker image with custom versions of PMD or Reviewdog:
 
 ```bash
 # Build with specific PMD version
-docker build --build-arg PMD_VERSION=7.18.0 -t action-pmd:custom .
+docker build --build-arg PMD_VERSION=7.25.0 -t action-pmd:custom .
 
 # Build with specific Reviewdog version
 docker build --build-arg REVIEWDOG_VERSION=v0.20.0 -t action-pmd:custom .
 
 # Build with both custom versions
 docker build \
-  --build-arg PMD_VERSION=7.18.0 \
+  --build-arg PMD_VERSION=7.25.0 \
   --build-arg REVIEWDOG_VERSION=v0.20.0 \
   -t action-pmd:custom .
 ```
