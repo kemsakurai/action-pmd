@@ -97,7 +97,7 @@ jobs:
     name: PMD job
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     - name: Run PMD
       uses: kemsakurai/action-pmd@v0.1.0
       with:
@@ -117,7 +117,7 @@ jobs:
     name: PMD job with cache
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     - name: Run PMD
       uses: kemsakurai/action-pmd@v0.1.0
       with:
@@ -138,7 +138,7 @@ jobs:
     name: PMD job with custom ruleset
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
     - name: Run PMD
       uses: kemsakurai/action-pmd@v0.1.0
       with:
