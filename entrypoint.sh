@@ -57,8 +57,14 @@ else
   echo "PMD cache is disabled (INPUT_PMD_CACHE is empty)"
 fi
 
-printenv
-ls
+# Display safe runtime information for debugging
+echo "=== Runtime Information ==="
+echo "Workspace: ${GITHUB_WORKSPACE:-not set}"
+echo "Workdir: ${INPUT_WORKDIR}"
+echo "Source path: ${INPUT_SRC_PATH}"
+echo "Ruleset path: ${INPUT_RULESETS_PATH}"
+echo "PMD cache: ${INPUT_PMD_CACHE:-disabled}"
+echo "==========================="
 
 # Execute PMD with error handling
 echo "Running PMD analysis..."
