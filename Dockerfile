@@ -3,7 +3,7 @@
 # Build stage: Download and extract PMD
 FROM alpine:3.22@sha256:310c62b5e7ca5b08167e4384c68db0fd2905dd9c7493756d356e893909057601 AS pmd-builder
 
-ARG PMD_VERSION=7.25.0
+ARG PMD_VERSION=7.28.0-SNAPSHOT
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache wget unzip && \
