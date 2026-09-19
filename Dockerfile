@@ -15,7 +15,7 @@ RUN apk add --no-cache wget unzip && \
 # Build stage: Download reviewdog binary from immutable release asset
 FROM alpine:3.22@sha256:310c62b5e7ca5b08167e4384c68db0fd2905dd9c7493756d356e893909057601 AS reviewdog-builder
 
-ARG REVIEWDOG_VERSION=v0.21.0
+ARG REVIEWDOG_VERSION=v0.21.2
 ARG TARGETARCH
 
 # hadolint ignore=DL3018
