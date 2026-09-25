@@ -41,3 +41,6 @@ This repository provides a Docker-based GitHub Action that runs PMD on Java sour
 - Prefer small, behavior-focused edits.
 - When changing command lines, preserve quoting and safe handling of empty optional flags.
 - Do not add unrelated refactors when implementing targeted fixes.
+## Maintenance Tooling
+
+- AI-SDLC 成熟度アセスメントの証拠収集スクリプト: `scripts/ai-sdlc/collect-evidence.sh`
